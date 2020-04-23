@@ -12,10 +12,12 @@
         <div x-show="slideshowNumber == 3">Slideshow 3</div>
         <div x-show="slideshowNumber == 4">Slideshow 4</div>
     </div>
-    <div class="fixed w-full z-20 flex justify-center">
-        <button @keydown.arrow-left.window="slideshowNumber--" @click="slideshowNumber--" class="px-4">&lt;</button>
-        <span class="px-4" x-text="slideshowNumber"></span>
-        <button @keydown.arrow-right.window="slideshowNumber++" @click="slideshowNumber++" class="px-4">&gt;</button>
+    <div class="fixed w-full z-20 flex justify-center bottom-0 bg-white">
+        <button @keydown.arrow-left.window="slideshowNumber--" @click="slideshowNumber--"
+            class="px-4 font-bold hover:bg-blue-200">&lt;</button>
+        <span class="px-4 text-xl font-medium" x-text="slideshowNumber"></span>
+        <button @keydown.arrow-right.window="slideshowNumber++" @click="slideshowNumber++"
+            class="px-4 font-bold hover:bg-blue-200">&gt;</button>
     </div>
 </body>
 
