@@ -5,18 +5,37 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body x-data="{ slideshowNumber: 1 }">
-    <div class="fixed w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center">
-        <div x-show="slideshowNumber == 1">Slideshow 1</div>
-        <div x-show="slideshowNumber == 2">Slideshow 2</div>
-        <div x-show="slideshowNumber == 3">Slideshow 3</div>
-        <div x-show="slideshowNumber == 4">Slideshow 4</div>
+<body x-data="{ slideshowNumber: 1, total: 0 }" x-init="
+            total = $refs.container.children.length;
+            for (i = 1; i <= total; i++) {
+                var child = $refs.container.children[i - 1]
+                child.setAttribute('index', i)
+                child.setAttribute('x-show', 'slideshowNumber == ' + i)
+            }
+        ">
+    <div x-ref="container" class="fixed w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center">
+        <div>Slideshow 1</div>
+        <div>Slideshow 2</div>
+        <div>Slideshow 4</div>
+        <div>Slideshow 3</div>
+        <div>Slideshow 3</div>
+        <div>Slideshow 3</div>
+        <div>Slideshow 3</div>
+        <div>Slideshow 3</div>
+        <div>Slideshow 3</div>
     </div>
     <div class="fixed w-full z-20 flex justify-center bottom-0 bg-white">
-        <button @keydown.arrow-left.window="slideshowNumber--" @click="slideshowNumber--"
+        <button
+            @keydown.arrow-left.window="slideshowNumber > 1 ? slideshowNumber-- : $refs.container.innerText = 'WHAT HAVE YOU DONE?'"
+            @click="slideshowNumber > 1 ? slideshowNumber-- : $refs.container.innerText = 'WHAT HAVE YOU DONE?'"
             class="px-4 font-bold hover:bg-blue-200">&lt;</button>
-        <span class="px-4 text-xl font-medium" x-text="slideshowNumber"></span>
-        <button @keydown.arrow-right.window="slideshowNumber++" @click="slideshowNumber++"
+        <div class="px-4 text-xl font-medium">
+            <span class="pr-1" x-text="slideshowNumber"></span>
+            of
+            <span class="pl-1" x-text="total"></span>
+        </div>
+        <button @keydown.arrow-right.window="slideshowNumber < total ? slideshowNumber++ : null"
+            @click="slideshowNumber < total ? slideshowNumber++ : null"
             class="px-4 font-bold hover:bg-blue-200">&gt;</button>
     </div>
 </body>
