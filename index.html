@@ -13,9 +13,9 @@
         <div x-show="slideshowNumber == 4">Slideshow 4</div>
     </div>
     <div class="fixed w-full z-20 flex justify-center">
-        <button @click="slideshowNumber--" class="px-4">&lt;</button>
+        <button @keydown.arrow-left.window="slideshowNumber--" @click="slideshowNumber--" class="px-4">&lt;</button>
         <span class="px-4" x-text="slideshowNumber"></span>
-        <button @click="slideshowNumber++" class="px-4">&gt;</button>
+        <button @keydown.arrow-right.window="slideshowNumber++" @click="slideshowNumber++" class="px-4">&gt;</button>
     </div>
 </body>
 
