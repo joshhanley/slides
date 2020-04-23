@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body x-data="{ slideshowNumber: 1 }">
+    <div class="fixed w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center">
+        <div x-show="slideshowNumber == 1">Slideshow 1</div>
+        <div x-show="slideshowNumber == 2">Slideshow 2</div>
+        <div x-show="slideshowNumber == 3">Slideshow 3</div>
+        <div x-show="slideshowNumber == 4">Slideshow 4</div>
+    </div>
+    <div class="fixed w-full z-20 flex justify-center">
+        <button @click="slideshowNumber--" class="px-4">&lt;</button>
+        <span class="px-4" x-text="slideshowNumber"></span>
+        <button @click="slideshowNumber++" class="px-4">&gt;</button>
+    </div>
+</body>
+
+</html>
