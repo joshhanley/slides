@@ -5,7 +5,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body x-data="data()" x-init="initData()">
+<body x-data="data()" x-init="initData">
     <div x-ref="container"
         class="fixed relative overflow-hidden w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center pb-10">
         <template x-for="number in Array.from(Array(10).keys())">
