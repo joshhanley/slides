@@ -73,6 +73,11 @@
                 this.slides.forEach(function (slide, index) {
                     innerDiv = document.createElement("DIV")
                     innerDiv.innerHTML = slide.innerHTML
+
+                    Array.from(innerDiv.children).forEach(function (child) {
+                        child.removeAttribute('x-text')
+                    })
+
                     innerDiv.style.width = slide.offsetWidth
                     innerDiv.style.height = slide.offsetHeight
                     innerDiv.classList.add('absolute', 'origin-top-left', 'border', 'border-gray-800')
