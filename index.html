@@ -41,7 +41,7 @@
                     if (i != this.slideshowNumber) {
                         child.style.display = "none"
                     } else {
-                        currentSlide = child
+                        this.currentSlide = child
                     }
 
                     child.setAttribute('x-show', 'slideshowNumber == ' + i)
@@ -49,10 +49,20 @@
             },
 
             nextSlide() {
-                this.slideshowNumber < this.total ? this.slideshowNumber++ : null
+                nextSlide = this.currentSlide.nextElementSibling
+
+                if (!nextSlide || typeof nextSlide === "undefined") return
+
+                this.currentSlide = nextSlide
+                this.slideshowNumber++
             },
 
             previousSlide() {
+                previousSlide = this.currentSlide.previousElementSibling
+
+                if (!previousSlide || typeof previousSlide === "undefined") return
+
+                this.currentSlide = previousSlide
                 this.slideshowNumber > 1 ? this.slideshowNumber-- : this.$refs.container.innerText = 'WHAT HAVE YOU DONE???'
             }
         }
