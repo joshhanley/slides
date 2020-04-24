@@ -3,21 +3,25 @@
 <head>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body x-data="data()" x-init="initData">
-    <div x-ref="container" class="fixed w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center">
-        <div>Slideshow 1</div>
-        <div>Slideshow 2</div>
-        <div>Slideshow 4</div>
-        <div>Slideshow 3</div>
-        <div>Slideshow 3</div>
-        <div>Slideshow 3</div>
-        <div>Slideshow 3</div>
-        <div>Slideshow 3</div>
-        <div>Slideshow 3</div>
+    <div x-ref="container"
+        class="fixed relative overflow-hidden w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center pb-10">
+        <template x-for="number in Array.from(Array(10).keys())">
+            <div x-transition:enter-start="translate-x-full" x-transition:enter="translate-x-0 duration-1000"
+                x-transition:leave="-translate-x-full duration-1000"
+                class="absolute w-full h-full transform flex items-center justify-center bg-blue-100"
+                x-text="'Slideshow ' + (number + 1)"></div>
+        </template>
     </div>
-    <div class="fixed w-full z-20 flex justify-center bottom-0 bg-white">
+    <div class="fixed w-full h-10 z-20 flex justify-center items-center bottom-0 bg-white">
         <button
             @keydown.arrow-left.window="slideshowNumber > 1 ? slideshowNumber-- : $refs.container.innerText = 'WHAT HAVE YOU DONE?'"
             @click="slideshowNumber > 1 ? slideshowNumber-- : $refs.container.innerText = 'WHAT HAVE YOU DONE?'"
@@ -38,9 +42,17 @@
             slideshowNumber: 1,
             total: 0,
             initData() {
-                this.total = this.$refs.container.children.length;
-                for (i = 1; i <= this.total; i++) {
-                    var child = this.$refs.container.children[i - 1]
+                for (i = 0; i < this.$refs.container.children.length; i++) {
+                    var child = this.$refs.container.children[i]
+
+                    if (child.tagName === "TEMPLATE") continue
+
+                    this.total++
+
+                    if (i != this.slideshowNumber) {
+                        child.style.display = "none"
+                    }
+
                     child.setAttribute('x-show', 'slideshowNumber == ' + i)
                 }
             }
