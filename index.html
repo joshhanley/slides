@@ -90,7 +90,7 @@
         <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
             x-ref="previewContainer"></div>
         <div class="h-12 flex justify-center items-center">
-            <button @keydown.arrow-left.window="goToFirstSlide()" @click="goToFirstSlide()"
+            <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
                 class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
             <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
                 class="px-4 font-bold hover:bg-blue-200">&lt;</button>
@@ -99,7 +99,7 @@
             </div>
             <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
                 class="px-4 font-bold hover:bg-blue-200">&gt;</button>
-            <button @keydown.arrow-right.window="goToLastSlide()" @click="goToLastSlide()"
+            <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
                 class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
         </div>
     </div>
