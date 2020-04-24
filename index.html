@@ -9,11 +9,13 @@
     <div x-ref="container"
         class="fixed relative overflow-hidden w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center pb-10">
         <template x-for="number in Array.from(Array(10).keys())">
-            <div class="absolute w-full h-full transform flex items-center justify-center bg-blue-100"
+            <div class="absolute w-full h-full transition-transform transform duration-1000 border border-gray-800 flex items-center justify-center bg-blue-100"
                 x-text="'Slideshow ' + (number + 1)"></div>
         </template>
     </div>
     <div class="fixed w-full h-10 z-20 flex justify-center items-center bottom-0 bg-white">
+        <button @keydown.arrow-left.window="goToFirstSlide()" @click="goToFirstSlide()"
+            class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
         <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
             class="px-4 font-bold hover:bg-blue-200">&lt;</button>
         <div class="px-4 text-xl font-medium">
@@ -21,6 +23,8 @@
         </div>
         <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
             class="px-4 font-bold hover:bg-blue-200">&gt;</button>
+        <button @keydown.arrow-right.window="goToLastSlide()" @click="goToLastSlide()"
+            class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
     </div>
 </body>
 <script>
@@ -28,7 +32,10 @@
         return {
             slideshowNumber: 1,
             total: 0,
+            slides: [],
             currentSlide: null,
+            firstSlide: null,
+            lastSlide: null,
 
             initData() {
                 for (i = 0; i < this.$refs.container.children.length; i++) {
@@ -39,22 +46,18 @@
                     this.total++
 
                     if (i != this.slideshowNumber) {
-                        child.style.display = "none"
+                        child.classList.add('translate-x-full')
                     } else {
                         this.currentSlide = child
                     }
 
-                    child.setAttribute('x-show', 'slideshowNumber == ' + i)
+                    this.slides.push(child)
                 }
-            },
 
-            nextSlide() {
-                nextSlide = this.currentSlide.nextElementSibling
+                this.firstSlide = this.currentSlide
+                this.lastSlide = this.$refs.container.lastElementChild
 
-                if (!nextSlide || typeof nextSlide === "undefined") return
-
-                this.currentSlide = nextSlide
-                this.slideshowNumber++
+                console.log(this.slides)
             },
 
             previousSlide() {
@@ -62,8 +65,64 @@
 
                 if (!previousSlide || typeof previousSlide === "undefined") return
 
+                this.currentSlide.classList.add('translate-x-full')
+
+                previousSlide.classList.remove('-translate-x-full')
+
                 this.currentSlide = previousSlide
                 this.slideshowNumber > 1 ? this.slideshowNumber-- : this.$refs.container.innerText = 'WHAT HAVE YOU DONE???'
+            },
+
+            nextSlide() {
+                nextSlide = this.currentSlide.nextElementSibling
+
+                if (!nextSlide || typeof nextSlide === "undefined") return
+
+                this.currentSlide.classList.add('-translate-x-full')
+
+                nextSlide.classList.remove('translate-x-full')
+
+                this.currentSlide = nextSlide
+                this.slideshowNumber++
+            },
+
+            goToFirstSlide() {
+                if (this.slideshowNumber == 1) return
+
+                this.slides.forEach(function (slide, index) {
+                    if (index == 0) return
+
+                    slide.classList.add('translate-x-full')
+                    slide.classList.remove('-translate-x-full')
+                })
+
+                this.firstSlide.classList.remove('-translate-x-full')
+
+                this.currentSlide = this.firstSlide
+                this.slideshowNumber = 1
+            },
+
+            goToLastSlide() {
+                if (this.slideshowNumber == this.total) return
+
+                let self = this
+
+                this.slides.forEach(function (slide, index) {
+                    console.log("Index:" + index + ".Total:" + self.total)
+                    if (index == self.total - 1) return
+
+                    slide.classList.add('-translate-x-full')
+                    slide.classList.remove('translate-x-full')
+                })
+
+                console.log(this.lastSlide)
+
+                // this.currentSlide.classList.add('-translate-x-full')
+
+                this.lastSlide.classList.remove('translate-x-full')
+
+                this.currentSlide = this.lastSlide
+                this.slideshowNumber = this.total
             }
         }
     }
