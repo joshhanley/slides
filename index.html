@@ -3,15 +3,9 @@
 <head>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
 </head>
 
-<body x-data="data()" x-init="initData">
+<body x-data="data()" x-init="initData()">
     <div x-ref="container"
         class="fixed relative overflow-hidden w-full h-full bg-red-300 z-10 text-3xl flex items-center justify-center pb-10">
         <template x-for="number in Array.from(Array(10).keys())">
@@ -23,9 +17,7 @@
         <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
             class="px-4 font-bold hover:bg-blue-200">&lt;</button>
         <div class="px-4 text-xl font-medium">
-            <span class="pr-1" x-text="slideshowNumber"></span>
-            of
-            <span class="pl-1" x-text="total"></span>
+            <span class="pr-1" x-text="slideshowNumber"></span> of <span class="pl-1" x-text="total"></span>
         </div>
         <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
             class="px-4 font-bold hover:bg-blue-200">&gt;</button>
@@ -37,6 +29,7 @@
             slideshowNumber: 1,
             total: 0,
             currentSlide: null,
+
             initData() {
                 for (i = 0; i < this.$refs.container.children.length; i++) {
                     var child = this.$refs.container.children[i]
@@ -54,9 +47,11 @@
                     child.setAttribute('x-show', 'slideshowNumber == ' + i)
                 }
             },
+
             nextSlide() {
                 this.slideshowNumber < this.total ? this.slideshowNumber++ : null
             },
+
             previousSlide() {
                 this.slideshowNumber > 1 ? this.slideshowNumber-- : this.$refs.container.innerText = 'WHAT HAVE YOU DONE???'
             }
