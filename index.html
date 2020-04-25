@@ -41,18 +41,40 @@
             class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
             <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
                 x-ref="previewContainer"></div>
-            <div class="h-12 flex justify-center items-center">
-                <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
-                    class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
-                <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
-                    class="px-4 font-bold hover:bg-blue-200">&lt;</button>
+            <div class="h-12 flex justify-center">
+                <div class="ml-auto flex flex-col items-center">
+                    <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
+                        class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
+                    <span class="text-gray-500">(home)</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
+                        class="px-4 font-bold hover:bg-blue-200">&lt;</button>
+                    <span class="text-gray-500">(&#8592;)</span>
+                </div>
+
                 <div class="px-4 text-xl font-medium">
                     <span class="pr-1" x-text="slideshowNumber"></span> of <span class="pl-1" x-text="total"></span>
                 </div>
-                <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
-                    class="px-4 font-bold hover:bg-blue-200">&gt;</button>
-                <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
-                    class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
+
+                <div class="flex flex-col items-center">
+                    <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
+                        class="px-4 font-bold hover:bg-blue-200">&gt;</button>
+                    <span class="text-gray-500">(&#8594;)</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
+                        class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
+                    <span class="text-gray-500">(end)</span>
+                </div>
+
+                <div class="ml-auto flex flex-col items-center">
+                    <button @click="presentationMode = !presentationMode"
+                        class=" px-4 font-bold hover:bg-blue-200">Presentation Mode</button>
+                    <span class="text-gray-500">(p)</span>
+                </div>
             </div>
         </div>
     </div>
