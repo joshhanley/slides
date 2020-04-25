@@ -37,21 +37,34 @@
             </div>
         </div>
 
-        <div x-show="!presentationMode" @keydown.p.window="presentationMode = !presentationMode"
-            class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
+        <div x-show="!presentationMode" class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
             <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
                 x-ref="previewContainer"></div>
-            <div class="h-12 flex justify-center">
-                <div class="ml-auto flex flex-col items-center">
+            <div class="flex justify-center">
+                <div class="mr-auto flex flex-col items-center">
+                    <button @keydown.s.window="showShortcuts = !showShortcuts" @click="showShortcuts = !showShortcuts"
+                        class=" px-4 font-bold hover:bg-blue-200"
+                        x-text="(showShortcuts ? 'Hide' : 'Show') + ' Shortcuts'">Hide
+                        Shortcuts</button>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(s)</span>
+                    </template>
+                </div>
+
+                <div class="flex flex-col items-center">
                     <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
                         class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
-                    <span class="text-gray-500">(home)</span>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(home)</span>
+                    </template>
                 </div>
 
                 <div class="flex flex-col items-center">
                     <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
                         class="px-4 font-bold hover:bg-blue-200">&lt;</button>
-                    <span class="text-gray-500">(&#8592;)</span>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(&#8592;)</span>
+                    </template>
                 </div>
 
                 <div class="px-4 text-xl font-medium">
@@ -61,19 +74,26 @@
                 <div class="flex flex-col items-center">
                     <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
                         class="px-4 font-bold hover:bg-blue-200">&gt;</button>
-                    <span class="text-gray-500">(&#8594;)</span>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(&#8594;)</span>
+                    </template>
                 </div>
 
                 <div class="flex flex-col items-center">
                     <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
                         class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
-                    <span class="text-gray-500">(end)</span>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(end)</span>
+                    </template>
                 </div>
 
                 <div class="ml-auto flex flex-col items-center">
-                    <button @click="presentationMode = !presentationMode"
+                    <button @keydown.p.window="presentationMode = !presentationMode"
+                        @click="presentationMode = !presentationMode"
                         class=" px-4 font-bold hover:bg-blue-200">Presentation Mode</button>
-                    <span class="text-gray-500">(p)</span>
+                    <template x-if="showShortcuts">
+                        <span class="text-gray-500">(p)</span>
+                    </template>
                 </div>
             </div>
         </div>
@@ -89,6 +109,7 @@
             firstSlide: null,
             lastSlide: null,
             presentationMode: false,
+            showShortcuts: true,
 
             initData() {
                 for (i = 0; i < this.$refs.container.children.length; i++) {
