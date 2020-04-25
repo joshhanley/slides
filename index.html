@@ -7,7 +7,8 @@
 
 <body x-data="data()" x-init="initData">
     <div class="fixed overflow-hidden w-full h-full flex flex-col">
-        <div x-ref="container" class="relative overflow-hidden w-full h-full z-10 flex items-center justify-center" style="background-image: url(assets/img/bg-img.svg)">
+        <div x-ref="container" class="relative overflow-hidden w-full flex-grow flex items-center justify-center"
+            style="background-image: url(assets/img/bg-img.svg)">
             <!-- Slide content goes here -->
             
             <div
@@ -192,7 +193,7 @@
             <!-- End slide content -->
         </div>
 
-        <div x-show="!presentationMode" class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
+        <div x-show="!presentationMode" class="w-full bottom-0 bg-white pt-1 border-t border-gray-800">
             <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
                 x-ref="previewContainer"></div>
             <div class="flex justify-center">
