@@ -1,6 +1,6 @@
 # Cynosure Slides
 
-A framework for creating simple and beautiful HTML presentations with [tailwindcss](https://tailwindcss.com/) and [alpinejs](https://github.com/alpinejs/alpine) with no frills.
+A framework for creating simple and beautiful, no frills HTML presentations with [tailwindcss](https://tailwindcss.com/) and [alpinejs](https://github.com/alpinejs/alpine).
 
 ## Table of Contents
 - [Cynosure Slides](#cynosure-slides)
