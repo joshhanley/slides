@@ -2,39 +2,42 @@
 
 <head>
     <link href="dist/app.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 
 <body x-data="data()" x-init="initData">
     <div class="fixed overflow-hidden w-full h-full flex flex-col">
-        <div x-ref="container" class="relative overflow-hidden w-full h-full z-10 flex items-center justify-center">
+        <div x-ref="container" class="relative overflow-hidden w-full h-full z-10 flex items-center justify-center" style="background-image: url(assets/bg-img.svg)">
             <div
-                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-                <div class="w-full h-full flex items-center justify-center text-6xl bg-blue-100">
-                    Slideshow 1
+                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full">
+                <div class="w-11/12 h-11/12 flex items-center justify-center bg-orange-100 text-gray-800 font-display">
+                    <!-- placeholder slide -->
+                    <img class="w-1/4" src="assets/logo-icon.png" />
+                    <p class="text-6xl">cynosure.</p>
                 </div>
             </div>
 
             <div
-                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-                <div class="w-full h-full flex items-center justify-center text-6xl bg-green-100">
-                    Slideshow 2
-                </div>
+            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full">
+            <div class="w-11/12 h-11/12 lg:w-9/12 lg:-mr-2/12 grid grid-cols-2 grid-rows-6 grid gap-1/12 p-1/12 bg-indigo-800 text-orange-100">
+                    <!-- title slide -->
+                    <div class="flex items-center justify-left">
+                        <img class="w-1/4" src="assets/logo-icon-white.png" />
+                        <p class="text-2xl">cynosure.</p>
+                    </div>
+                    <div class="col-span-2 row-start-2 row-span-4 flex flex-col justify-center">
+                        <p class="font-display text-6xl">This is a title.</p>
+                        <p class="text-xl lg:col-start-2"> This is a subtitle that is maybe a little long.</p>
+                    </div>
+                    <div class="text-sm col-start-2 row-start-6">
+                        <hr class="border-t border-orange-100" />
+                        Your Name <br>
+                        Your Company
+                    </div>
             </div>
+        </div>
 
-            <div
-                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-                <div class="w-full h-full flex items-center justify-center text-6xl bg-orange-100">
-                    Slideshow 3
-                </div>
-            </div>
 
-            <div
-                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-                <div class="w-full h-full flex flex-col items-center justify-center text-6xl bg-purple-200">
-                    <div>Slideshow 4</div>
-                    <div>Has something different!</div>
-                </div>
-            </div>
         </div>
 
         <div x-show="!presentationMode" class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
@@ -108,7 +111,7 @@
             currentSlide: null,
             firstSlide: null,
             lastSlide: null,
-            presentationMode: false,
+            presentationMode: true,
             showShortcuts: true,
 
             initData() {
