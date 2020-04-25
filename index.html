@@ -5,101 +5,53 @@
 </head>
 
 <body x-data="data()" x-init="initData">
-    <div x-ref="container"
-        class="fixed relative overflow-hidden w-full h-full z-10 flex items-center justify-center pb-48">
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-blue-100">Slideshow
-                1</div>
-        </div>
+    <div class="fixed overflow-hidden w-full h-full flex flex-col">
+        <div x-ref="container" class="relative overflow-hidden w-full h-full z-10 flex items-center justify-center">
+            <div
+                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
+                <div class="w-full h-full flex items-center justify-center text-6xl bg-blue-100">
+                    Slideshow 1
+                </div>
+            </div>
 
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-green-100">Slideshow
-                2</div>
-        </div>
+            <div
+                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
+                <div class="w-full h-full flex items-center justify-center text-6xl bg-green-100">
+                    Slideshow 2
+                </div>
+            </div>
 
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-orange-100">
-                Slideshow 3</div>
-        </div>
+            <div
+                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
+                <div class="w-full h-full flex items-center justify-center text-6xl bg-orange-100">
+                    Slideshow 3
+                </div>
+            </div>
 
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex flex-col items-center justify-center text-6xl bg-purple-200">
-                <div>Slideshow 4</div>
-                <div>Has something different!</div>
+            <div
+                class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
+                <div class="w-full h-full flex flex-col items-center justify-center text-6xl bg-purple-200">
+                    <div>Slideshow 4</div>
+                    <div>Has something different!</div>
+                </div>
             </div>
         </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-blue-100">Slideshow
-                1</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-green-100">Slideshow
-                2</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-orange-100">
-                Slideshow 3</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex flex-col items-center justify-center text-6xl bg-purple-200">
-                <div>Slideshow 4</div>
-                <div>Has something different!</div>
+        <div class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
+            <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
+                x-ref="previewContainer"></div>
+            <div class="h-12 flex justify-center items-center">
+                <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
+                    class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
+                <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
+                    class="px-4 font-bold hover:bg-blue-200">&lt;</button>
+                <div class="px-4 text-xl font-medium">
+                    <span class="pr-1" x-text="slideshowNumber"></span> of <span class="pl-1" x-text="total"></span>
+                </div>
+                <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
+                    class="px-4 font-bold hover:bg-blue-200">&gt;</button>
+                <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
+                    class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
             </div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-blue-100">Slideshow
-                1</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-green-100">Slideshow
-                2</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex items-center justify-center text-6xl bg-orange-100">
-                Slideshow 3</div>
-        </div>
-
-        <div
-            class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full border-l border-gray-800 ">
-            <div class="w-full h-full flex flex-col items-center justify-center text-6xl bg-purple-200">
-                <div>Slideshow 4</div>
-                <div>Has something different!</div>
-            </div>
-        </div>
-    </div>
-    <div class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
-        <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
-            x-ref="previewContainer"></div>
-        <div class="h-12 flex justify-center items-center">
-            <button @keydown.home.window="goToFirstSlide()" @click="goToFirstSlide()"
-                class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
-            <button @keydown.arrow-left.window="previousSlide()" @click="previousSlide()"
-                class="px-4 font-bold hover:bg-blue-200">&lt;</button>
-            <div class="px-4 text-xl font-medium">
-                <span class="pr-1" x-text="slideshowNumber"></span> of <span class="pl-1" x-text="total"></span>
-            </div>
-            <button @keydown.arrow-right.window="nextSlide()" @click="nextSlide()"
-                class="px-4 font-bold hover:bg-blue-200">&gt;</button>
-            <button @keydown.end.window="goToLastSlide()" @click="goToLastSlide()"
-                class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
         </div>
     </div>
 </body>
