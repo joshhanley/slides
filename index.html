@@ -36,7 +36,9 @@
                 </div>
             </div>
         </div>
-        <div class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
+
+        <div x-show="!presentationMode" @keydown.p.window="presentationMode = !presentationMode"
+            class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
             <div class="px-2 min-h-32 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
                 x-ref="previewContainer"></div>
             <div class="h-12 flex justify-center items-center">
@@ -64,6 +66,7 @@
             currentSlide: null,
             firstSlide: null,
             lastSlide: null,
+            presentationMode: false,
 
             initData() {
                 for (i = 0; i < this.$refs.container.children.length; i++) {
