@@ -8,6 +8,8 @@
 <body x-data="data()" x-init="initData">
     <div class="fixed overflow-hidden w-full h-full flex flex-col">
         <div x-ref="container" class="relative overflow-hidden w-full h-full z-10 flex items-center justify-center" style="background-image: url(assets/img/bg-img.svg)">
+            <!-- Slide content goes here -->
+            
             <div
                 class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full">
                 <div class="w-11/12 h-11/12 flex items-center justify-center bg-orange-100 text-gray-800 font-display">
@@ -79,9 +81,7 @@
                 </div>
             </div>
 
-        </div>
-
-
+            <!-- End slide content -->
         </div>
 
         <div x-show="!presentationMode" class="fixed w-full z-20 bottom-0 bg-white pt-1 border-t border-gray-800">
