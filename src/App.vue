@@ -402,11 +402,8 @@ export default {
   mounted() {
     this.initData();
     this.addKeyboardShortcuts();
+    this.addWindowResizeEvent();
 
-    window.addEventListener("resize", () => {
-      console.log(this.$refs.container.offsetWidth + ":" + this.previewWidth);
-      this.calculatePreviewSizes();
-    });
   },
 
   methods: {
@@ -487,6 +484,12 @@ export default {
           default:
             break;
         }
+      });
+    },
+
+    addWindowResizeEvent() {
+      window.addEventListener("resize", () => {
+        this.calculatePreviewSizes();
       });
     },
 
