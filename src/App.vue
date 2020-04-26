@@ -573,19 +573,17 @@ export default {
 
       let newSlide = this.slides[newSlideNumber - 1];
 
-      console.log();
-
       let slidesInBetween = [];
-
-      if (Math.abs(this.slideshowNumber - newSlideNumber)) {
-        slidesInBetween = this.slides.slice(
-          this.slideshowNumber,
-          newSlideNumber - 2
-        );
-      }
 
       if (newSlideNumber > this.slideshowNumber) {
         this.currentSlide.classList.add("-translate-x-full");
+
+        if (Math.abs(this.slideshowNumber - newSlideNumber)) {
+          slidesInBetween = this.slides.slice(
+            this.slideshowNumber,
+            newSlideNumber - 2
+          );
+        }
 
         slidesInBetween.forEach(slide => {
           slide.classList.remove("translate-x-full");
@@ -595,6 +593,13 @@ export default {
         newSlide.classList.remove("translate-x-full");
       } else if (newSlideNumber < this.slideshowNumber) {
         this.currentSlide.classList.add("translate-x-full");
+
+        if (Math.abs(this.slideshowNumber - newSlideNumber)) {
+          slidesInBetween = this.slides.slice(
+            newSlideNumber,
+            this.slideshowNumber - 2
+          );
+        }
 
         slidesInBetween.forEach(slide => {
           slide.classList.remove("-translate-x-full");
