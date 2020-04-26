@@ -403,7 +403,12 @@ export default {
     this.initData();
     this.addKeyboardShortcuts();
     this.addWindowResizeEvent();
+  },
 
+  watch: {
+    slideshowNumber(newSlideshowNumber) {
+      localStorage.slideshowNumber = newSlideshowNumber;
+    }
   },
 
   methods: {
@@ -436,6 +441,10 @@ export default {
 
       setTimeout(() => {
         this.currentSlide.classList.remove("translate-x-full");
+
+        if (localStorage.slideshowNumber) {
+          this.gotoSlide(parseInt(localStorage.slideshowNumber));
+        }
       }, 100);
     },
 
