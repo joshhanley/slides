@@ -389,7 +389,6 @@ export default {
       showControls: true,
       showPreviews: true,
       previews: [],
-      previewContentScale: 0,
       previewBarHeight: 128
     };
   },
@@ -411,6 +410,9 @@ export default {
     },
     previewContentHeight: function() {
       return this.$refs.container.offsetHeight;
+    },
+    previewContentScale: function() {
+      return this.previewBarHeight / this.$refs.container.offsetHeight;
     }
   },
 
@@ -431,16 +433,14 @@ export default {
       this.firstSlide = this.currentSlide;
       this.lastSlide = this.$refs.container.lastElementChild;
 
-      this.loadPreview();
+      this.loadPreviews();
 
       setTimeout(() => {
         this.currentSlide.classList.remove("translate-x-full");
       }, 100);
     },
 
-    loadPreview() {
-      this.previewContentScale =
-        this.previewBarHeight / this.$refs.container.offsetHeight;
+    loadPreviews() {
 
       this.slides.forEach((slide, index) => {
         this.previews.push(slide.cloneNode(true));
