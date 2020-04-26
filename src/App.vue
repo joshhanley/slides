@@ -43,6 +43,217 @@
         </div>
       </div>
 
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-11/12 h-11/12 lg:w-9/12 lg:-mr-2/12 grid grid-cols-2 grid-rows-6 gap-1/12 p-1/12 bg-teal-800 text-orange-100 relative"
+          >
+            <!-- title slide -->
+            <div class="absolute ml-1/12 mt-16 flex items-center">
+              <img class="w-1/12" src="assets/img/logo-icon-white.png" />
+              <p class="font-display text-2xl">cynosure.</p>
+            </div>
+            <div class="col-span-2 row-start-2 row-span-4 flex flex-col justify-center">
+              <p class="font-display text-6xl">This is a title.</p>
+              <p class="text-2xl md:text-xl">This is a subtitle that is maybe a little longer.</p>
+            </div>
+            <div class="text-sm col-start-2 row-start-6">
+              <hr class="border-t border-orange-100" />Your Name
+              <br />Your Company
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full grid grid-cols-2 grid-rows-5 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+          >
+            <!-- content slide -->
+            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
+            <p class="font-display text-5xl col-span-2 row-start-2">This is a title.</p>
+            <div
+              class="col-span-2 row-start-3 row-span-3 flex flex-col justify-start lg:justify-center"
+            >
+              <p class="text-4xl md:text-2xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                anim id est laborum
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+                fast transition, rather than slide transition, might look better on full width slides
+                or perhaps a fade out as one moves off screen
+                or perhaps, show the background between transitions - though would only work if someone had a background
+
+                currently looks quite busy when there's a bunch of content on both slides
+      -->
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full grid grid-cols-2 grid-rows-4 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+          >
+            <!-- graphics slide -->
+            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
+            <p class="flex items-end row-start-1 col-span-2 font-display text-5xl">Some graphics</p>
+            <!-- appears immediately (i.e. on first click) -->
+            <div class="row-start-2 md:col-start-1">
+              <!-- appears on second click -->
+              <img src="assets/painting.jpg" />
+              <p class="text-gray-600">acrylic on canvas</p>
+            </div>
+            <div class="row-start-3 md:row-start-2 md:col-start-2">
+              <!-- appears on third click -->
+              <img src="assets/mural.jpg" />
+              <p class="text-gray-600">water-based ink on concrete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-11/12 h-11/12 grid grid-cols-2 grid-rows-4 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+          >
+            <!-- graphics slide -->
+            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
+            <p class="flex items-end row-start-1 col-span-2 font-display text-5xl">Some graphics</p>
+            <!-- appears immediately (i.e. on first click) -->
+            <div class="row-start-2 md:col-start-1">
+              <!-- appears on second click -->
+              <img src="assets/painting.jpg" />
+              <p class="text-gray-600">acrylic on canvas</p>
+            </div>
+            <div class="row-start-3 md:row-start-2 md:col-start-2">
+              <!-- appears on third click -->
+              <img src="assets/mural.jpg" />
+              <p class="text-gray-600">water-based ink on concrete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full grid grid-cols-3 grid-rows-5 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+          >
+            <!-- graphics slide -->
+            <img class="absolute h-12 ml-1/12 mt-16 lg:mt-12" src="assets/img/logo-icon.png" />
+            <p class="flex items-end mt-8 row-start-1 col-span-2 font-display text-5xl">Some graphs</p>
+            <!-- appears immediately (i.e. on first click) -->
+            <p
+              class="flex items-end justify-center row-start-2 col-start-1 font-bold"
+            >Drift Diffusion Model</p>
+            <div class="row-start-3 md:col-start-1">
+              <!-- appears on second click -->
+              <img src="assets/DDM.jpg" />
+              <p class="text-gray-600">Ratcliff, 1978 (also Laming, 1965)</p>
+              <hr
+                class="mt-8 md:mt-0 md:mr-8 border-b-2 md:border-b-0 md:border-r-2 md:border-orange-400"
+              />
+            </div>
+            <p class="flex items-end justify-center row-start-2 col-start-2 col-span-2 font-bold">
+              Linear
+              Ballistic Accumulator
+            </p>
+            <div class="row-start-4 md:row-start-3 md:col-start-2">
+              <!-- appears on third click -->
+              <img src="assets/LBA1.jpg" />
+              <p class="text-gray-600">Brown and Heathcote, 2011</p>
+            </div>
+            <div class="row-start-5 md:row-start-3 md:col-start-3">
+              <!-- appears on third click -->
+              <img src="assets/LBA1.jpg" />
+              <p class="text-gray-600">Brown and Heathcote, 2011</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full grid grid-cols-2 grid-rows-6 gap-1/12 p-1/12 bg-red-800 text-orange-100 relative"
+          >
+            <!-- quote slide -->
+            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon-white.png" />
+            <p
+              class="col-span-2 row-start-2 row-span-3 pr-1/4 flex items-end font-display text-4xl"
+            >
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua."
+            </p>
+            <div class="row-start-5 row-span-2">
+              <hr class="border-t-2 border-orange-100" />
+              <p class="text-2xl md:text-xl mt-4 font-bold italic">Some person.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- scrolling graphics slides
+                although vertical scrolling effect would typically be more useful (demonstrate webpage, or a document etc)
+                note - for this to work, I guess we would need to be able to toggle 'display background between slides'
+      -->
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full flex items-center justify-center text-gray-800 bg-orange-100 relative overflow-hidden"
+          >
+            <!-- graphics slide -->
+            <div class="absolute left-0 ml-1/12 w-1/4 flex items-center">
+              <img class="w-full" src="assets/img/logo-icon.png" />
+            </div>
+            <div class="w-full h-full flex items-center justify-center">
+              <img src="assets/hip-hop-spines.jpg" class="object-none -mr-5/6" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
+      >
+        <div class="w-full h-full flex items-center justify-center">
+          <div
+            class="w-full h-full flex items-center justify-center text-gray-800 bg-orange-100 relative overflow-hidden"
+          >
+            <!-- graphics slide -->
+            <div class="w-full h-full flex items-center justify-center">
+              <img src="assets/hip-hop-spines.jpg" class="object-none -ml-5/6" />
+            </div>
+            <div class="absolute right-0 mr-1/12 w-1/4 flex items-center">
+              <p class="font-display text-6xl">cynosure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- End slide content -->
     </div>
 
