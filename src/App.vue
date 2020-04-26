@@ -355,7 +355,7 @@
 export default {
   data() {
     return {
-      slideshowNumber: 1,
+      slideshowNumber: 0,
       total: 0,
       slides: [],
       currentSlide: null,
@@ -378,17 +378,9 @@ export default {
       for (let i = 0; i < this.$refs.container.children.length; i++) {
         var child = this.$refs.container.children[i];
 
-        if (child.tagName === "TEMPLATE") continue;
-
         this.total++;
 
-        let index = i;
-
-        if (this.$refs.container.firstElementChild.tagName !== "TEMPLATE")
-          index = i + 1;
-
-        if (index == this.slideshowNumber) {
-          child.classList.remove("translate-x-full");
+        if (i == this.slideshowNumber) {
           this.currentSlide = child;
         }
 
@@ -399,6 +391,10 @@ export default {
       this.lastSlide = this.$refs.container.lastElementChild;
 
       this.loadPreview();
+
+      setTimeout(() => {
+        this.currentSlide.classList.remove("translate-x-full");
+      }, 100);
     },
 
     loadPreview() {
@@ -564,7 +560,9 @@ export default {
 
     togglePresentationMode() {
       this.presentationMode = !this.presentationMode;
-    }
+    },
+
+    gotoSlide(slideNumber) {}
   }
 };
 </script>
