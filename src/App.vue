@@ -407,9 +407,6 @@ export default {
           previewDiv.offsetWidth / slide.offsetWidth
         );
 
-        console.log(previewDiv.offsetWidth + ":" + slide.offsetWidth);
-        console.log(previewDiv.offsetHeight + ":" + slide.offsetHeight);
-
         innerDiv.style.transform =
           "scale(" +
           previewDiv.offsetWidth / slide.offsetWidth +
