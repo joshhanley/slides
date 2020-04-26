@@ -37,8 +37,8 @@
             </div>
             <div class="p-1/12 h-1/6 text-sm grid grid-cols-2">
               <div class="col-start-2">
-              <hr class="border-t border-orange-100" />Your Name
-              <br />Your Company
+                <hr class="border-t border-orange-100" />Your Name
+                <br />Your Company
               </div>
             </div>
           </div>
@@ -63,8 +63,8 @@
             </div>
             <div class="p-1/12 h-1/6 text-sm grid grid-cols-2">
               <div class="col-start-2">
-              <hr class="border-t border-orange-100" />Your Name
-              <br />Your Company
+                <hr class="border-t border-orange-100" />Your Name
+                <br />Your Company
               </div>
             </div>
           </div>
@@ -75,15 +75,11 @@
         class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
       >
         <div class="w-full h-full flex items-center justify-center">
-          <div
-            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
-          >
+          <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- content slide -->
             <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
             <p class="font-display text-5xl ml-1/12 mt-1/4 lg:mt-1/6">This is a title.</p>
-            <div
-              class="flex-grow ml-1/12 mt-4 flex items-center"
-            >
+            <div class="flex-grow ml-1/12 mt-4 flex items-center">
               <p class="pr-1/12 pb-1/12 text-1xl sm:text-2xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -109,22 +105,24 @@
         class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
       >
         <div class="w-full h-full flex items-center justify-center">
-          <div
-            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
-          >
+          <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
             <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
-            <p class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl">Some graphics</p>
+            <p
+              class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl"
+            >Some graphics</p>
             <!-- appears immediately (i.e. on first click) -->
-            <div class="mt-4 ml-1/12 pr-1/12 pb-1/12 flex-grow grid gap-4 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
+            <div
+              class="mt-4 ml-1/12 pr-1/12 pb-1/12 flex-grow grid gap-4 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2"
+            >
               <div class="flex flex-col justify-center">
                 <!-- appears on second click -->
-                <img src="assets/painting.jpg"/>
+                <img src="assets/painting.jpg" />
                 <p class="text-gray-600">acrylic on canvas</p>
               </div>
               <div class="flex flex-col justify-center">
                 <!-- appears on third click -->
-                <img src="assets/mural.jpg"/>
+                <img src="assets/mural.jpg" />
                 <p class="text-gray-600">water-based ink on concrete</p>
               </div>
             </div>
@@ -136,22 +134,24 @@
         class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
       >
         <div class="w-full h-full flex items-center justify-center">
-          <div
-            class="w-11/12 h-11/12 flex flex-col text-gray-800 bg-orange-100 relative"
-          >
+          <div class="w-11/12 h-11/12 flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
             <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
-            <p class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl">Some graphics</p>
+            <p
+              class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl"
+            >Some graphics</p>
             <!-- appears immediately (i.e. on first click) -->
-            <div class="mt-4 ml-2/12 pr-2/12 pb-1/12 flex-grow grid gap-1/12 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
+            <div
+              class="mt-4 ml-2/12 pr-2/12 pb-1/12 flex-grow grid gap-1/12 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2"
+            >
               <div class="flex flex-col justify-center">
                 <!-- appears on second click -->
-                <img src="assets/painting.jpg"/>
+                <img src="assets/painting.jpg" />
                 <p class="text-gray-600">acrylic on canvas</p>
               </div>
               <div class="flex flex-col justify-center">
                 <!-- appears on third click -->
-                <img src="assets/mural.jpg"/>
+                <img src="assets/mural.jpg" />
                 <p class="text-gray-600">water-based ink on concrete</p>
               </div>
             </div>
@@ -163,9 +163,7 @@
         class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
       >
         <div class="w-full h-full flex items-center justify-center">
-          <div
-            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
-          >
+          <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
             <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
             <p class="mt-24 ml-1/12 pt-4 font-display text-4xl">Some graphs</p>
@@ -173,11 +171,11 @@
             <div class="flex-grow px-2/12 flex flex-col justify-center pb-1/4 pt-4 xl:pt-12">
               <p class="font-bold text-center">Linear Ballistic Accumulator</p>
               <div class="mt-4 flex flex-col md:flex-row">
-                <div class="">
+                <div class>
                   <!-- appears on third click -->
                   <img src="assets/LBA1.jpg" />
                 </div>
-                <div class="">
+                <div class>
                   <!-- appears on third click -->
                   <img src="assets/LBA1.jpg" />
                 </div>
@@ -192,9 +190,7 @@
         class="absolute w-full h-full flex items-center justify-center transition-transform transform duration-1000 translate-x-full"
       >
         <div class="w-full h-full flex items-center justify-center">
-          <div
-            class="w-full h-full flex flex-col bg-red-800 text-orange-100 relative"
-          >
+          <div class="w-full h-full flex flex-col bg-red-800 text-orange-100 relative">
             <!-- quote slide -->
             <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon-white.png" />
             <div class="flex-grow mt-24 ml-1/12 pr-1/12 flex flex-col justify-center">
@@ -274,7 +270,7 @@
             @click="gotoSlide(index + 1)"
           >
             <div
-              class="absolute origin-top-left"
+              class="absolute origin-top-left whitespace-normal"
               v-html="preview.innerHTML"
               :style="{ width: previewContentWidth, height: previewContentHeight, transform: 'scale(' + previewContentScale + ',' + previewContentScale + ')' }"
             ></div>
@@ -383,7 +379,7 @@ export default {
       firstSlide: null,
       lastSlide: null,
 
-      presentationMode: true,
+      presentationMode: false,
       showShortcuts: true,
       showControls: true,
       showPreviews: true,
