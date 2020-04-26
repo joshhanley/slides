@@ -4,6 +4,7 @@ let OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 let TerserJSPlugin = require('terser-webpack-plugin');
 let BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 let CopyPlugin = require('copy-webpack-plugin');
+let VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     context: path.resolve(__dirname),
@@ -11,11 +12,15 @@ module.exports = {
         app: [
             './src/app.js',
             './src/app.css'
+        ],
+        main: [
+            './src/main.js'
         ]
     },
 
     output: {
         filename: '[name].js',
+        chunkFilename: '[name].js',
         path: path.resolve(__dirname, './dist')
     },
 
@@ -31,6 +36,11 @@ module.exports = {
             },
 
             {
+                test: /\.vue$/,
+                use: 'vue-loader',
+            },
+
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
@@ -42,6 +52,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
+
+        new VueLoaderPlugin(),
 
         new BrowserSyncPlugin(
             {
