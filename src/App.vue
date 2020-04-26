@@ -202,7 +202,7 @@
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua."
               </p>
-              <div class="mt-4">
+              <div class="mt-4 pr-1/2">
                 <hr class="border-t-2 border-orange-100" />
                 <p class="text-2xl md:text-xl mt-4 font-bold italic">Some person.</p>
               </div>
