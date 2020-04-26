@@ -590,10 +590,13 @@ export default {
       if (newSlideNumber > this.slideshowNumber) {
         this.currentSlide.classList.add("-translate-x-full");
 
+        console.log(this.slideshowNumber + ":" + newSlideNumber);
+        console.log(Math.abs(this.slideshowNumber - newSlideNumber));
+
         if (Math.abs(this.slideshowNumber - newSlideNumber)) {
           slidesInBetween = this.slides.slice(
             this.slideshowNumber,
-            newSlideNumber - 2
+            newSlideNumber - 1
           );
         }
 
@@ -609,7 +612,7 @@ export default {
         if (Math.abs(this.slideshowNumber - newSlideNumber)) {
           slidesInBetween = this.slides.slice(
             newSlideNumber,
-            this.slideshowNumber - 2
+            this.slideshowNumber - 1
           );
         }
 
