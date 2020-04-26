@@ -54,75 +54,57 @@
       <div class="flex justify-center">
         <div class="mr-auto flex flex-col items-center">
           <button
-            @keydown.s.window="showShortcuts = !showShortcuts"
-            @click="showShortcuts = !showShortcuts"
+            @click="toggleShortcuts"
             class="px-4 font-bold hover:bg-blue-200"
-            x-text="(showShortcuts ? 'Hide' : 'Show') + ' Shortcuts'"
+            v-text="(showShortcuts ? 'Hide' : 'Show') + ' Shortcuts'"
           >
             Hide
             Shortcuts
           </button>
-          <template x-if="showShortcuts">
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(s)</span>
           </template>
         </div>
 
         <div class="flex flex-col items-center">
-          <button
-            @keydown.home.window="goToFirstSlide()"
-            @click="goToFirstSlide()"
-            class="px-4 font-bold hover:bg-blue-200"
-          >&lt;&lt;</button>
-          <template x-if="showShortcuts">
+          <button @click="goToFirstSlide()" class="px-4 font-bold hover:bg-blue-200">&lt;&lt;</button>
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(home)</span>
           </template>
         </div>
 
         <div class="flex flex-col items-center">
-          <button
-            @keydown.arrow-left.window="previousSlide()"
-            @click="previousSlide()"
-            class="px-4 font-bold hover:bg-blue-200"
-          >&lt;</button>
-          <template x-if="showShortcuts">
+          <button @click="previousSlide()" class="px-4 font-bold hover:bg-blue-200">&lt;</button>
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(&#8592;)</span>
           </template>
         </div>
 
         <div class="px-4 text-xl font-medium">
-          <span class="pr-1" x-text="slideshowNumber"></span> of
-          <span class="pl-1" x-text="total"></span>
+          <span class="pr-1" v-text="slideshowNumber"></span> of
+          <span class="pl-1" v-text="total"></span>
         </div>
 
         <div class="flex flex-col items-center">
-          <button
-            @keydown.arrow-right.window="nextSlide()"
-            @click="nextSlide()"
-            class="px-4 font-bold hover:bg-blue-200"
-          >&gt;</button>
-          <template x-if="showShortcuts">
+          <button @click="nextSlide()" class="px-4 font-bold hover:bg-blue-200">&gt;</button>
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(&#8594;)</span>
           </template>
         </div>
 
         <div class="flex flex-col items-center">
-          <button
-            @keydown.end.window="goToLastSlide()"
-            @click="goToLastSlide()"
-            class="px-4 font-bold hover:bg-blue-200"
-          >&gt;&gt;</button>
-          <template x-if="showShortcuts">
+          <button @click="goToLastSlide()" class="px-4 font-bold hover:bg-blue-200">&gt;&gt;</button>
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(end)</span>
           </template>
         </div>
 
         <div class="ml-auto flex flex-col items-center">
           <button
-            @keydown.p.window="presentationMode = !presentationMode"
-            @click="presentationMode = !presentationMode"
+            @click="togglePresentationMode"
             class="px-4 font-bold hover:bg-blue-200"
           >Presentation Mode</button>
-          <template x-if="showShortcuts">
+          <template v-if="showShortcuts">
             <span class="text-gray-500">(p)</span>
           </template>
         </div>
@@ -148,6 +130,7 @@ export default {
 
   mounted() {
     this.initData();
+    this.addKeyboardShortcuts();
   },
 
   methods: {
@@ -225,8 +208,47 @@ export default {
       });
     },
 
+    addKeyboardShortcuts() {
+      let self = this;
+
+      window.addEventListener("keyup", e => {
+        switch (e.key) {
+          case "s":
+            self.toggleShortcuts();
+            break;
+
+          case "Home":
+            self.goToFirstSlide();
+            break;
+
+          case "ArrowLeft":
+            self.previousSlide();
+            break;
+
+          case "ArrowRight":
+            self.nextSlide();
+            break;
+
+          case "End":
+            self.goToLastSlide();
+            break;
+
+          case "p":
+            self.togglePresentationMode();
+            break;
+
+          default:
+            break;
+        }
+      });
+    },
+
+    toggleShortcuts() {
+      this.showShortcuts = !this.showShortcuts;
+    },
+
     previousSlide() {
-      previousSlide = this.currentSlide.previousElementSibling;
+      let previousSlide = this.currentSlide.previousElementSibling;
 
       if (!previousSlide || typeof previousSlide === "undefined") return;
 
@@ -241,7 +263,7 @@ export default {
     },
 
     nextSlide() {
-      nextSlide = this.currentSlide.nextElementSibling;
+      let nextSlide = this.currentSlide.nextElementSibling;
 
       if (!nextSlide || typeof nextSlide === "undefined") return;
 
@@ -285,6 +307,10 @@ export default {
 
       this.currentSlide = this.lastSlide;
       this.slideshowNumber = this.total;
+    },
+
+    togglePresentationMode() {
+      this.presentationMode = !this.presentationMode;
     }
   }
 };
