@@ -2,8 +2,11 @@ let path = require('path')
 let MiniCssExtractPlugin = require("mini-css-extract-plugin");
 let OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 let TerserJSPlugin = require('terser-webpack-plugin');
+let BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+let CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname),
     entry: {
         app: [
             './src/app.js',
@@ -24,8 +27,8 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
-            }
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+            },
         ]
     },
 
@@ -33,6 +36,18 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
-    ]
 
+        new BrowserSyncPlugin(
+            {
+                host: 'localhost',
+                port: 3000,
+                server: { baseDir: ['dist'] }
+            }
+        ),
+
+        new CopyPlugin([
+            { from: 'assets', to: 'assets', context: 'src' },
+            { from: '**/*.html', context: 'src' },
+        ]),
+    ],
 }
