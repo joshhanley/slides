@@ -355,7 +355,7 @@
 export default {
   data() {
     return {
-      slideshowNumber: 0,
+      slideshowNumber: 1,
       total: 0,
       slides: [],
       currentSlide: null,
@@ -380,7 +380,7 @@ export default {
 
         this.total++;
 
-        if (i == this.slideshowNumber) {
+        if (i == this.slideshowNumber - 1) {
           this.currentSlide = child;
         }
 
@@ -562,7 +562,49 @@ export default {
       this.presentationMode = !this.presentationMode;
     },
 
-    gotoSlide(slideNumber) {}
+    gotoSlide(newSlideNumber) {
+      if (newSlideNumber > this.total || newSlideNumber < 1) return;
+
+      let newSlide = this.slides[newSlideNumber - 1];
+
+      console.log();
+
+      let slidesInBetween = [];
+
+      if (Math.abs(this.slideshowNumber - newSlideNumber)) {
+        slidesInBetween = this.slides.slice(
+          this.slideshowNumber,
+          newSlideNumber - 2
+        );
+      }
+
+      if (newSlideNumber > this.slideshowNumber) {
+        this.currentSlide.classList.add("-translate-x-full");
+
+        slidesInBetween.forEach(slide => {
+          slide.classList.remove("translate-x-full");
+          slide.classList.add("-translate-x-full");
+        });
+
+        newSlide.classList.remove("translate-x-full");
+      } else if (newSlideNumber < this.slideshowNumber) {
+        this.currentSlide.classList.add("translate-x-full");
+
+        slidesInBetween.forEach(slide => {
+          slide.classList.remove("-translate-x-full");
+          slide.classList.add("translate-x-full");
+        });
+
+        newSlide.classList.remove("-translate-x-full");
+      } else {
+        return;
+      }
+
+      this.currentSlide = newSlide;
+      this.slideshowNumber = newSlideNumber;
+
+      return;
+    }
   }
 };
 </script>
