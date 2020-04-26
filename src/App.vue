@@ -264,6 +264,7 @@
         ref="previewContainer"
       >
         <div
+          ref="previews"
           v-if="previews.length > 0"
           class="w-full h-full flex items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
         >
@@ -408,6 +409,7 @@ export default {
   watch: {
     slideshowNumber(newSlideshowNumber) {
       localStorage.slideshowNumber = newSlideshowNumber;
+      this.scrollPreviewIntoView(newSlideshowNumber);
     }
   },
 
@@ -630,6 +632,15 @@ export default {
       this.slideshowNumber = newSlideNumber;
 
       return;
+    },
+
+    scrollPreviewIntoView(slideNumber) {
+      if (slideNumber > this.total || slideNumber < 1) return;
+
+      this.$refs.previews.children[slideNumber - 1].scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
     }
   }
 };
