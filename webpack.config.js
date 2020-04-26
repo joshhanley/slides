@@ -13,9 +13,6 @@ module.exports = {
             './src/app.js',
             './src/app.css'
         ],
-        'old/old': [ // todo: Remove this
-            './src/old/old.js'
-        ]
     },
 
     output: {
@@ -64,7 +61,6 @@ module.exports = {
 
         new CopyPlugin([
             { from: 'assets', to: 'assets', context: 'src' },
-            { from: 'assets', to: 'old/assets', context: 'src' }, // todo: Remove this
             { from: '**/*.html', context: 'src' },
         ]),
     ],
