@@ -259,11 +259,13 @@
 
     <div v-show="!presentationMode" class="w-full bg-whiteborder-t border-gray-800">
       <div
+        v-show="showPreviews"
         class="px-2 py-1 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
         ref="previewContainer"
       ></div>
-      <div class="flex justify-center">
-        <div class="mr-auto flex flex-col items-center">
+
+      <div v-show="showControls" class="flex justify-center">
+        <div class="flex flex-col items-center">
           <button
             @click="toggleShortcuts"
             class="px-4 font-bold hover:bg-blue-200"
@@ -274,6 +276,20 @@
           </button>
           <template v-if="showShortcuts">
             <span class="text-gray-500">(s)</span>
+          </template>
+        </div>
+
+        <div class="mr-auto flex flex-col items-center">
+          <button
+            @click="toggleControls"
+            class="px-4 font-bold hover:bg-blue-200"
+            v-text="(showControls ? 'Hide' : 'Show') + ' Controls'"
+          >
+            Hide
+            Controls
+          </button>
+          <template v-if="showShortcuts">
+            <span class="text-gray-500">(c)</span>
           </template>
         </div>
 
@@ -312,6 +328,17 @@
 
         <div class="ml-auto flex flex-col items-center">
           <button
+            @click="togglePreviews"
+            class="px-4 font-bold hover:bg-blue-200"
+            v-text="(showPreviews ? 'Hide' : 'Show') + ' Previews'"
+          >Hide Previews</button>
+          <template v-if="showShortcuts">
+            <span class="text-gray-500">(v)</span>
+          </template>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <button
             @click="togglePresentationMode"
             class="px-4 font-bold hover:bg-blue-200"
           >Presentation Mode</button>
@@ -335,7 +362,9 @@ export default {
       firstSlide: null,
       lastSlide: null,
       presentationMode: false,
-      showShortcuts: true
+      showShortcuts: true,
+      showControls: true,
+      showPreviews: true
     };
   },
 
@@ -425,6 +454,10 @@ export default {
             self.toggleShortcuts();
             break;
 
+          case "c":
+            self.toggleControls();
+            break;
+
           case "Home":
             self.goToFirstSlide();
             break;
@@ -441,6 +474,10 @@ export default {
             self.goToLastSlide();
             break;
 
+          case "v":
+            self.togglePreviews();
+            break;
+
           case "p":
             self.togglePresentationMode();
             break;
@@ -453,6 +490,10 @@ export default {
 
     toggleShortcuts() {
       this.showShortcuts = !this.showShortcuts;
+    },
+
+    toggleControls() {
+      this.showControls = !this.showControls;
     },
 
     previousSlide() {
@@ -515,6 +556,10 @@ export default {
 
       this.currentSlide = this.lastSlide;
       this.slideshowNumber = this.total;
+    },
+
+    togglePreviews() {
+      this.showPreviews = !this.showPreviews;
     },
 
     togglePresentationMode() {
