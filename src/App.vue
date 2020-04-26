@@ -262,7 +262,30 @@
         v-show="showPreviews"
         class="px-2 py-1 w-full flex flex-shrink-0 items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
         ref="previewContainer"
-      ></div>
+      >
+        <div
+          v-if="previews.length > 0"
+          class="w-full h-full flex items-center justify-start space-x-2 overflow-x-auto overflow-y-hidden whitespace-no-wrap"
+        >
+          <div
+            v-for="(preview, index) in previews"
+            :key="index"
+            class="relative h-32 flex-shrink-0 overflow-hidden border cursor-pointer"
+            :class="[ index + 1 == slideshowNumber ? 'border-blue-500' : 'border-gray-800']"
+            :style="{ width: previewWidth}"
+            @click="gotoSlide(index + 1)"
+          >
+            <div
+              class="absolute origin-top-left"
+              v-html="preview.innerHTML"
+              :style="{ width: previewContentWidth, height: previewContentHeight, transform: 'scale(' + previewContentScale + ',' + previewContentScale + ')' }"
+            ></div>
+          </div>
+        </div>
+        <div v-else>
+          <div class="relative h-32 flex-shrink-0">Loading previews</div>
+        </div>
+      </div>
 
       <div v-show="showControls" class="flex justify-center">
         <div class="flex flex-col items-center">
@@ -364,13 +387,31 @@ export default {
       presentationMode: false,
       showShortcuts: true,
       showControls: true,
-      showPreviews: true
+      showPreviews: true,
+      previews: [],
+      previewContentScale: 0,
+      previewBarHeight: 128
     };
   },
 
   mounted() {
     this.initData();
     this.addKeyboardShortcuts();
+  },
+
+  computed: {
+    previewWidth: function() {
+      return (
+        this.previewBarHeight *
+        (this.$refs.container.offsetWidth / this.$refs.container.offsetHeight)
+      );
+    },
+    previewContentWidth: function() {
+      return this.$refs.container.offsetWidth;
+    },
+    previewContentHeight: function() {
+      return this.$refs.container.offsetHeight;
+    }
   },
 
   methods: {
@@ -398,46 +439,11 @@ export default {
     },
 
     loadPreview() {
-      let previewContainer = this.$refs.previewContainer;
+      this.previewContentScale =
+        this.previewBarHeight / this.$refs.container.offsetHeight;
 
-      this.slides.forEach(function(slide, index) {
-        let innerDiv = document.createElement("DIV");
-        innerDiv.innerHTML = slide.innerHTML;
-
-        Array.from(innerDiv.children).forEach(function(child) {
-          child.removeAttribute("x-text");
-        });
-
-        innerDiv.classList.add(
-          "absolute",
-          "origin-top-left",
-          "border-8",
-          "border-gray-800"
-        );
-
-        let previewDiv = document.createElement("DIV");
-        previewDiv.appendChild(innerDiv);
-        previewDiv.classList.add("relative", "h-32", "flex-shrink-0");
-
-        previewContainer.appendChild(previewDiv);
-
-        innerDiv.style.width = slide.offsetWidth;
-        innerDiv.style.height = slide.offsetHeight;
-
-        previewDiv.style.width =
-          (slide.offsetWidth / slide.offsetHeight) * previewDiv.offsetHeight;
-
-        let scale = Math.min(
-          previewDiv.offsetHeight / slide.offsetHeight,
-          previewDiv.offsetWidth / slide.offsetWidth
-        );
-
-        innerDiv.style.transform =
-          "scale(" +
-          previewDiv.offsetWidth / slide.offsetWidth +
-          ", " +
-          previewDiv.offsetHeight / slide.offsetHeight +
-          ")";
+      this.slides.forEach((slide, index) => {
+        this.previews.push(slide.cloneNode(true));
       });
     },
 
