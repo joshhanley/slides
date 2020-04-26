@@ -24,20 +24,22 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-11/12 h-11/12 lg:w-9/12 lg:-ml-2/12 grid grid-cols-2 grid-rows-6 gap-1/12 p-1/12 bg-indigo-800 text-orange-100 relative"
+            class="w-11/12 h-11/12 lg:w-9/12 lg:-ml-2/12 flex flex-col bg-indigo-800 text-orange-100 relative"
           >
             <!-- title slide -->
-            <div class="absolute ml-1/12 mt-16 flex items-center">
+            <div class="absolute ml-1/12 mt-12 flex items-center">
               <img class="w-1/12" src="assets/img/logo-icon-white.png" />
               <p class="font-display text-2xl">cynosure.</p>
             </div>
-            <div class="col-span-2 row-start-2 row-span-4 flex flex-col justify-center">
-              <p class="font-display text-6xl">This is a title.</p>
+            <div class="mt-24 ml-1/12 pr-1/12 flex-grow flex flex-col justify-center">
+              <p class="font-display text-5xl">This is a title.</p>
               <p class="text-2xl md:text-xl">This is a subtitle that is maybe a little longer.</p>
             </div>
-            <div class="text-sm col-start-2 row-start-6">
+            <div class="p-1/12 h-1/6 text-sm grid grid-cols-2">
+              <div class="col-start-2">
               <hr class="border-t border-orange-100" />Your Name
               <br />Your Company
+              </div>
             </div>
           </div>
         </div>
@@ -48,20 +50,22 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-11/12 h-11/12 lg:w-9/12 lg:-mr-2/12 grid grid-cols-2 grid-rows-6 gap-1/12 p-1/12 bg-teal-800 text-orange-100 relative"
+            class="w-11/12 h-11/12 lg:w-9/12 lg:-mr-2/12 flex flex-col bg-teal-800 text-orange-100 relative"
           >
             <!-- title slide -->
-            <div class="absolute ml-1/12 mt-16 flex items-center">
+            <div class="absolute ml-1/12 mt-12 flex items-center">
               <img class="w-1/12" src="assets/img/logo-icon-white.png" />
               <p class="font-display text-2xl">cynosure.</p>
             </div>
-            <div class="col-span-2 row-start-2 row-span-4 flex flex-col justify-center">
-              <p class="font-display text-6xl">This is a title.</p>
+            <div class="mt-24 ml-1/12 pr-1/12 flex-grow flex flex-col justify-center">
+              <p class="font-display text-5xl">This is a title.</p>
               <p class="text-2xl md:text-xl">This is a subtitle that is maybe a little longer.</p>
             </div>
-            <div class="text-sm col-start-2 row-start-6">
+            <div class="p-1/12 h-1/6 text-sm grid grid-cols-2">
+              <div class="col-start-2">
               <hr class="border-t border-orange-100" />Your Name
               <br />Your Company
+              </div>
             </div>
           </div>
         </div>
@@ -72,15 +76,15 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-full h-full grid grid-cols-2 grid-rows-5 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
           >
             <!-- content slide -->
-            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
-            <p class="font-display text-5xl col-span-2 row-start-2">This is a title.</p>
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <p class="font-display text-5xl ml-1/12 mt-1/4 lg:mt-1/6">This is a title.</p>
             <div
-              class="col-span-2 row-start-3 row-span-3 flex flex-col justify-start lg:justify-center"
+              class="flex-grow ml-1/12 mt-4 flex items-center"
             >
-              <p class="text-4xl md:text-2xl">
+              <p class="pr-1/12 pb-1/12 text-1xl sm:text-2xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -106,21 +110,23 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-full h-full grid grid-cols-2 grid-rows-4 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
           >
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
-            <p class="flex items-end row-start-1 col-span-2 font-display text-5xl">Some graphics</p>
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <p class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl">Some graphics</p>
             <!-- appears immediately (i.e. on first click) -->
-            <div class="row-start-2 md:col-start-1">
-              <!-- appears on second click -->
-              <img src="assets/painting.jpg" />
-              <p class="text-gray-600">acrylic on canvas</p>
-            </div>
-            <div class="row-start-3 md:row-start-2 md:col-start-2">
-              <!-- appears on third click -->
-              <img src="assets/mural.jpg" />
-              <p class="text-gray-600">water-based ink on concrete</p>
+            <div class="mt-4 ml-1/12 pr-1/12 pb-1/12 flex-grow grid gap-4 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
+              <div class="flex flex-col justify-center">
+                <!-- appears on second click -->
+                <img src="assets/painting.jpg"/>
+                <p class="text-gray-600">acrylic on canvas</p>
+              </div>
+              <div class="flex flex-col justify-center">
+                <!-- appears on third click -->
+                <img src="assets/mural.jpg"/>
+                <p class="text-gray-600">water-based ink on concrete</p>
+              </div>
             </div>
           </div>
         </div>
@@ -131,21 +137,23 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-11/12 h-11/12 grid grid-cols-2 grid-rows-4 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+            class="w-11/12 h-11/12 flex flex-col text-gray-800 bg-orange-100 relative"
           >
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon.png" />
-            <p class="flex items-end row-start-1 col-span-2 font-display text-5xl">Some graphics</p>
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <p class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl">Some graphics</p>
             <!-- appears immediately (i.e. on first click) -->
-            <div class="row-start-2 md:col-start-1">
-              <!-- appears on second click -->
-              <img src="assets/painting.jpg" />
-              <p class="text-gray-600">acrylic on canvas</p>
-            </div>
-            <div class="row-start-3 md:row-start-2 md:col-start-2">
-              <!-- appears on third click -->
-              <img src="assets/mural.jpg" />
-              <p class="text-gray-600">water-based ink on concrete</p>
+            <div class="mt-4 ml-2/12 pr-2/12 pb-1/12 flex-grow grid gap-1/12 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
+              <div class="flex flex-col justify-center">
+                <!-- appears on second click -->
+                <img src="assets/painting.jpg"/>
+                <p class="text-gray-600">acrylic on canvas</p>
+              </div>
+              <div class="flex flex-col justify-center">
+                <!-- appears on third click -->
+                <img src="assets/mural.jpg"/>
+                <p class="text-gray-600">water-based ink on concrete</p>
+              </div>
             </div>
           </div>
         </div>
@@ -156,35 +164,24 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-full h-full grid grid-cols-3 grid-rows-5 gap-1/12 p-1/12 text-gray-800 bg-orange-100 relative"
+            class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative"
           >
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-16 lg:mt-12" src="assets/img/logo-icon.png" />
-            <p class="flex items-end mt-8 row-start-1 col-span-2 font-display text-5xl">Some graphs</p>
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <p class="mt-24 ml-1/12 pt-4 font-display text-4xl">Some graphs</p>
             <!-- appears immediately (i.e. on first click) -->
-            <p
-              class="flex items-end justify-center row-start-2 col-start-1 font-bold"
-            >Drift Diffusion Model</p>
-            <div class="row-start-3 md:col-start-1">
-              <!-- appears on second click -->
-              <img src="assets/DDM.jpg" />
-              <p class="text-gray-600">Ratcliff, 1978 (also Laming, 1965)</p>
-              <hr
-                class="mt-8 md:mt-0 md:mr-8 border-b-2 md:border-b-0 md:border-r-2 md:border-orange-400"
-              />
-            </div>
-            <p class="flex items-end justify-center row-start-2 col-start-2 col-span-2 font-bold">
-              Linear
-              Ballistic Accumulator
-            </p>
-            <div class="row-start-4 md:row-start-3 md:col-start-2">
-              <!-- appears on third click -->
-              <img src="assets/LBA1.jpg" />
-              <p class="text-gray-600">Brown and Heathcote, 2011</p>
-            </div>
-            <div class="row-start-5 md:row-start-3 md:col-start-3">
-              <!-- appears on third click -->
-              <img src="assets/LBA1.jpg" />
+            <div class="flex-grow px-2/12 flex flex-col justify-center pb-1/4 pt-4 xl:pt-12">
+              <p class="font-bold text-center">Linear Ballistic Accumulator</p>
+              <div class="mt-4 flex flex-col md:flex-row">
+                <div class="">
+                  <!-- appears on third click -->
+                  <img src="assets/LBA1.jpg" />
+                </div>
+                <div class="">
+                  <!-- appears on third click -->
+                  <img src="assets/LBA1.jpg" />
+                </div>
+              </div>
               <p class="text-gray-600">Brown and Heathcote, 2011</p>
             </div>
           </div>
@@ -196,19 +193,19 @@
       >
         <div class="w-full h-full flex items-center justify-center">
           <div
-            class="w-full h-full grid grid-cols-2 grid-rows-6 gap-1/12 p-1/12 bg-red-800 text-orange-100 relative"
+            class="w-full h-full flex flex-col bg-red-800 text-orange-100 relative"
           >
             <!-- quote slide -->
-            <img class="absolute h-12 ml-1/12 mt-16" src="assets/img/logo-icon-white.png" />
-            <p
-              class="col-span-2 row-start-2 row-span-3 pr-1/4 flex items-end font-display text-4xl"
-            >
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua."
-            </p>
-            <div class="row-start-5 row-span-2">
-              <hr class="border-t-2 border-orange-100" />
-              <p class="text-2xl md:text-xl mt-4 font-bold italic">Some person.</p>
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon-white.png" />
+            <div class="flex-grow mt-24 ml-1/12 pr-1/12 flex flex-col justify-center">
+              <p class="font-display text-2xl md:text-4xl">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua."
+              </p>
+              <div class="mt-4">
+                <hr class="border-t-2 border-orange-100" />
+                <p class="text-2xl md:text-xl mt-4 font-bold italic">Some person.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -386,7 +383,7 @@ export default {
       firstSlide: null,
       lastSlide: null,
 
-      presentationMode: false,
+      presentationMode: true,
       showShortcuts: true,
       showControls: true,
       showPreviews: true,
