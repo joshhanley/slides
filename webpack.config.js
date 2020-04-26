@@ -13,14 +13,13 @@ module.exports = {
             './src/app.js',
             './src/app.css'
         ],
-        main: [
-            './src/main.js'
+        'old/old': [ // todo: Remove this
+            './src/old/old.js'
         ]
     },
 
     output: {
         filename: '[name].js',
-        chunkFilename: '[name].js',
         path: path.resolve(__dirname, './dist')
     },
 
@@ -65,6 +64,7 @@ module.exports = {
 
         new CopyPlugin([
             { from: 'assets', to: 'assets', context: 'src' },
+            { from: 'assets', to: 'old/assets', context: 'src' }, // todo: Remove this
             { from: '**/*.html', context: 'src' },
         ]),
     ],
