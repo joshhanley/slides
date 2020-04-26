@@ -384,54 +384,56 @@ export default {
       currentSlide: null,
       firstSlide: null,
       lastSlide: null,
+
       presentationMode: false,
       showShortcuts: true,
       showControls: true,
       showPreviews: true,
+
       previews: [],
-      previewBarHeight: 128
+      previewBarHeight: 128,
+      previewWidth: 0,
+      previewContentWidth: 0,
+      previewContentHeight: 0,
+      previewContentScale: 0
     };
   },
 
   mounted() {
     this.initData();
     this.addKeyboardShortcuts();
-  },
 
-  computed: {
-    previewWidth: function() {
-      return (
-        this.previewBarHeight *
-        (this.$refs.container.offsetWidth / this.$refs.container.offsetHeight)
-      );
-    },
-    previewContentWidth: function() {
-      return this.$refs.container.offsetWidth;
-    },
-    previewContentHeight: function() {
-      return this.$refs.container.offsetHeight;
-    },
-    previewContentScale: function() {
-      return this.previewBarHeight / this.$refs.container.offsetHeight;
-    }
+    window.addEventListener("resize", () => {
+      console.log(this.$refs.container.offsetWidth + ":" + this.previewWidth);
+      this.calculatePreviewSizes();
+    });
   },
 
   methods: {
+    calculatePreviewSizes() {
+      this.previewWidth =
+        this.previewBarHeight *
+        (this.$refs.container.offsetWidth / this.$refs.container.offsetHeight);
+
+      this.previewContentWidth = this.$refs.container.offsetWidth;
+
+      this.previewContentHeight = this.$refs.container.offsetHeight;
+
+      this.previewContentScale =
+        this.previewBarHeight / this.$refs.container.offsetHeight;
+    },
+
     initData() {
-      for (let i = 0; i < this.$refs.container.children.length; i++) {
-        var child = this.$refs.container.children[i];
+      this.slides = Array.from(this.$refs.container.children);
+      this.total = this.slides.length;
 
-        this.total++;
-
-        if (i == this.slideshowNumber - 1) {
-          this.currentSlide = child;
-        }
-
-        this.slides.push(child);
-      }
-
-      this.firstSlide = this.currentSlide;
+      this.currentSlide = this.$refs.container.children[
+        this.slideshowNumber - 1
+      ];
+      this.firstSlide = this.$refs.container.firstElementChild;
       this.lastSlide = this.$refs.container.lastElementChild;
+
+      this.calculatePreviewSizes();
 
       this.loadPreviews();
 
@@ -441,10 +443,8 @@ export default {
     },
 
     loadPreviews() {
-
-      this.slides.forEach((slide, index) => {
-        this.previews.push(slide.cloneNode(true));
-      });
+      this.previews = [];
+      this.previews = this.slides;
     },
 
     addKeyboardShortcuts() {
