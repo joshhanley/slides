@@ -1,6 +1,6 @@
 # Cynosure Slides
 
-A framework for creating simple and beautiful, no frills HTML presentations with [tailwindcss](https://tailwindcss.com/) and [alpinejs](https://github.com/alpinejs/alpine).
+A framework for creating simple and beautiful, no frills HTML presentations with [Tailwind CSS](https://tailwindcss.com/) and [Vue.js](https://vuejs.org/).
 
 ## Table of Contents
 - [Cynosure Slides](#cynosure-slides)
@@ -8,18 +8,20 @@ A framework for creating simple and beautiful, no frills HTML presentations with
   - [Installation](#installation)
   - [Editing your presentation](#editing-your-presentation)
   - [Presenting](#presenting)
-  - [Advanced configuration](#advanced-configuration)
   - [Built With](#built-with)
   - [Authors](#authors)
   - [License](#license)
 
 ## Installation
 
-Simply clone, or download and unzip, a copy of this repo, and open the `index.html` file directly in your browser.
+1) Clone, or download and unzip, a copy of this repo, and open the `index.html` file directly in your browser.
+2) Run `npm install`
+3) Run `npm run dev`, or run `npm run watch` if you'd like npm to watch your changes in your browser on `localhost:3000`.
 
 ## Editing your presentation
 
 Include your slides between the HTML comments `<!-- Slide content goes here -->` and `<!-- End slide content -->`.
+Running `npm run watch` will allow you to view changes in real time in your browser on `localhost:3000`.
 
 ## Presenting
 
@@ -30,16 +32,10 @@ You can navigate through your slides by pressing the left and right arrow keys.
 The `Home` and `End` keys will take you to the first and last slides.
 If you forget, you can show the shortcut keys in preview mode by pressing `s`.
 
-## Advanced configuration
-
-All default tailwindcss classes and alpinejs behaviour is available. If you introduce modifications, you must:
-1) `npm install`
-2) `npm run dev`
-
 ## Built With
 
-* [tailwindcss](https://tailwindcss.com/)
-* [alpinejs](https://github.com/alpinejs/alpine)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Vue.js](https://vuejs.org/)
 
 ## Authors
 
