@@ -3,7 +3,7 @@
     <div
       ref="container"
       class="relative overflow-hidden w-full flex-grow flex items-center justify-center"
-      style="background-image: url(assets/img/bg-img.svg)"
+      style="background-image: url(assets/demo/img/bg-img.svg)"
     >
       <!-- Slide content goes here -->
 
@@ -13,7 +13,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-11/12 h-11/12 flex items-center justify-center bg-orange-100 text-gray-800">
             <!-- placeholder slide -->
-            <img class="w-1/4" src="assets/img/logo-icon.png" />
+            <img class="w-1/4" src="assets/demo/img/logo-icon.png" />
             <p class="font-display text-6xl">cynosure.</p>
           </div>
         </div>
@@ -28,7 +28,7 @@
           >
             <!-- title slide -->
             <div class="absolute ml-1/12 mt-12 flex items-center">
-              <img class="w-1/12" src="assets/img/logo-icon-white.png" />
+              <img class="w-1/12" src="assets/demo/img/logo-icon-white.png" />
               <p class="font-display text-2xl">cynosure.</p>
             </div>
             <div class="mt-24 ml-1/12 pr-1/12 flex-grow flex flex-col justify-center">
@@ -54,7 +54,7 @@
           >
             <!-- title slide -->
             <div class="absolute ml-1/12 mt-12 flex items-center">
-              <img class="w-1/12" src="assets/img/logo-icon-white.png" />
+              <img class="w-1/12" src="assets/demo/img/logo-icon-white.png" />
               <p class="font-display text-2xl">cynosure.</p>
             </div>
             <div class="mt-24 ml-1/12 pr-1/12 flex-grow flex flex-col justify-center">
@@ -77,7 +77,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- content slide -->
-            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/demo/img/logo-icon.png" />
             <p class="font-display text-5xl ml-1/12 mt-1/4 lg:mt-1/6">This is a title.</p>
             <div class="flex-grow ml-1/12 mt-4 flex items-center">
               <p class="pr-1/12 pb-1/12 text-1xl sm:text-2xl">
@@ -107,7 +107,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/demo/img/logo-icon.png" />
             <p
               class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl"
             >Some graphics</p>
@@ -117,12 +117,12 @@
             >
               <div class="flex flex-col justify-center">
                 <!-- appears on second click -->
-                <img src="assets/painting.jpg" />
+                <img src="assets/demo/painting.jpg" />
                 <p class="text-gray-600">acrylic on canvas</p>
               </div>
               <div class="flex flex-col justify-center">
                 <!-- appears on third click -->
-                <img src="assets/mural.jpg" />
+                <img src="assets/demo/mural.jpg" />
                 <p class="text-gray-600">water-based ink on concrete</p>
               </div>
             </div>
@@ -136,7 +136,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-11/12 h-11/12 flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/demo/img/logo-icon.png" />
             <p
               class="mt-24 pt-4 ml-1/12 pr-1/12 md:pr-1/4 lg:pr-1/2 font-display text-4xl"
             >Some graphics</p>
@@ -146,12 +146,12 @@
             >
               <div class="flex flex-col justify-center">
                 <!-- appears on second click -->
-                <img src="assets/painting.jpg" />
+                <img src="assets/demo/painting.jpg" />
                 <p class="text-gray-600">acrylic on canvas</p>
               </div>
               <div class="flex flex-col justify-center">
                 <!-- appears on third click -->
-                <img src="assets/mural.jpg" />
+                <img src="assets/demo/mural.jpg" />
                 <p class="text-gray-600">water-based ink on concrete</p>
               </div>
             </div>
@@ -165,7 +165,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-full h-full flex flex-col text-gray-800 bg-orange-100 relative">
             <!-- graphics slide -->
-            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon.png" />
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/demo/img/logo-icon.png" />
             <p class="mt-24 ml-1/12 pt-4 font-display text-4xl">Some graphs</p>
             <!-- appears immediately (i.e. on first click) -->
             <div class="flex-grow px-2/12 flex flex-col justify-center pb-1/4 pt-4 xl:pt-12">
@@ -173,11 +173,11 @@
               <div class="mt-4 flex flex-col md:flex-row">
                 <div class>
                   <!-- appears on third click -->
-                  <img src="assets/LBA1.jpg" />
+                  <img src="assets/demo/LBA1.jpg" />
                 </div>
                 <div class>
                   <!-- appears on third click -->
-                  <img src="assets/LBA1.jpg" />
+                  <img src="assets/demo/LBA1.jpg" />
                 </div>
               </div>
               <p class="text-gray-600">Brown and Heathcote, 2011</p>
@@ -192,7 +192,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-full h-full flex flex-col bg-red-800 text-orange-100 relative">
             <!-- quote slide -->
-            <img class="absolute h-12 ml-1/12 mt-12" src="assets/img/logo-icon-white.png" />
+            <img class="absolute h-12 ml-1/12 mt-12" src="assets/demo/img/logo-icon-white.png" />
             <div class="flex-grow mt-24 ml-1/12 pr-1/12 flex flex-col justify-center">
               <p class="font-display text-2xl md:text-4xl">
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -220,10 +220,10 @@
           >
             <!-- graphics slide -->
             <div class="absolute left-0 ml-1/12 w-1/4 flex items-center">
-              <img class="w-full" src="assets/img/logo-icon.png" />
+              <img class="w-full" src="assets/demo/img/logo-icon.png" />
             </div>
             <div class="w-full h-full flex items-center justify-center">
-              <img src="assets/hip-hop-spines.jpg" class="object-none -mr-5/6" />
+              <img src="assets/demo/hip-hop-spines.jpg" class="object-none -mr-5/6" />
             </div>
           </div>
         </div>
@@ -238,7 +238,7 @@
           >
             <!-- graphics slide -->
             <div class="w-full h-full flex items-center justify-center">
-              <img src="assets/hip-hop-spines.jpg" class="object-none -ml-5/6" />
+              <img src="assets/demo/hip-hop-spines.jpg" class="object-none -ml-5/6" />
             </div>
             <div class="absolute right-0 mr-1/12 w-1/4 flex items-center">
               <p class="font-display text-6xl">cynosure.</p>
