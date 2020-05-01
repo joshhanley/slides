@@ -127,8 +127,6 @@
 </template>
 
 <script>
-import slide from "./Slide.vue";
-
 export default {
   data() {
     return {
