@@ -44,4 +44,10 @@ module.exports = {
             { from: '**/*.html', context: 'src' },
         ]),
     ],
+
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
+    }
 }
