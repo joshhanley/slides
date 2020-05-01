@@ -227,8 +227,16 @@ export default {
             self.previousSlide();
             break;
 
+          case "ArrowUp":
+            self.goToFirstSlide();
+            break;
+
           case "ArrowRight":
             self.nextSlide();
+            break;
+
+          case "ArrowDown":
+            self.goToLastSlide();
             break;
 
           case "End":
