@@ -140,7 +140,7 @@ export default {
       presentationMode: false,
       showShortcuts: true,
       showControls: true,
-      showPreviews: false,
+      showPreviews: true,
 
       previews: [],
       previewBarHeight: 128,
@@ -160,7 +160,7 @@ export default {
   watch: {
     slideshowNumber(newSlideshowNumber) {
       localStorage.slideshowNumber = newSlideshowNumber;
-      // this.scrollPreviewIntoView(newSlideshowNumber); // TODO reenable previews
+      this.scrollPreviewIntoView(newSlideshowNumber);
     }
   },
 
@@ -188,22 +188,22 @@ export default {
       this.firstSlide = this.slides[0];
       this.lastSlide = this.slides[this.total - 1];
 
-      // this.calculatePreviewSizes(); // TODO reenable previews
+      this.calculatePreviewSizes();
 
-      // this.loadPreviews(); // TODO reenable previews
+      this.loadPreviews();
 
       setTimeout(() => {
         this.currentSlide.$el.classList.remove("translate-x-full");
 
-        // if (localStorage.slideshowNumber) {
-        //   this.gotoSlide(parseInt(localStorage.slideshowNumber)); // TODO reenable resume
-        // }
+        if (localStorage.slideshowNumber) {
+          this.gotoSlide(parseInt(localStorage.slideshowNumber));
+        }
       }, 100);
     },
 
     loadPreviews() {
       this.previews = [];
-      this.previews = this.slides;
+      this.previews = this.slides.map(slide => slide.$el);
     },
 
     addKeyboardShortcuts() {
