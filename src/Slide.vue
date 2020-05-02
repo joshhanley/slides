@@ -7,3 +7,17 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    forward() {
+      alert("forward");
+    },
+
+    backward() {
+      alert("backward");
+    }
+  }
+};
+</script>

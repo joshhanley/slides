@@ -140,7 +140,7 @@ export default {
       presentationMode: false,
       showShortcuts: true,
       showControls: true,
-      showPreviews: true,
+      showPreviews: false,
 
       previews: [],
       previewBarHeight: 128,
@@ -160,7 +160,7 @@ export default {
   watch: {
     slideshowNumber(newSlideshowNumber) {
       localStorage.slideshowNumber = newSlideshowNumber;
-      this.scrollPreviewIntoView(newSlideshowNumber);
+      // this.scrollPreviewIntoView(newSlideshowNumber); // TODO reenable previews
     }
   },
 
@@ -179,25 +179,25 @@ export default {
     },
 
     initData() {
-      this.slides = Array.from(this.$refs.container.children);
+      this.slides = this.$children;
+      console.log(this.$children);
+
       this.total = this.slides.length;
 
-      this.currentSlide = this.$refs.container.children[
-        this.slideshowNumber - 1
-      ];
-      this.firstSlide = this.$refs.container.firstElementChild;
-      this.lastSlide = this.$refs.container.lastElementChild;
+      this.currentSlide = this.slides[this.slideshowNumber - 1];
+      this.firstSlide = this.slides[0];
+      this.lastSlide = this.slides[this.total - 1];
 
-      this.calculatePreviewSizes();
+      // this.calculatePreviewSizes(); // TODO reenable previews
 
-      this.loadPreviews();
+      // this.loadPreviews(); // TODO reenable previews
 
       setTimeout(() => {
-        this.currentSlide.classList.remove("translate-x-full");
+        this.currentSlide.$el.classList.remove("translate-x-full");
 
-        if (localStorage.slideshowNumber) {
-          this.gotoSlide(parseInt(localStorage.slideshowNumber));
-        }
+        // if (localStorage.slideshowNumber) {
+        //   this.gotoSlide(parseInt(localStorage.slideshowNumber)); // TODO reenable resume
+        // }
       }, 100);
     },
 
@@ -272,13 +272,15 @@ export default {
     },
 
     previousSlide() {
-      let previousSlide = this.currentSlide.previousElementSibling;
+      let previousSlide = this.slides[this.slideshowNumber - 2];
 
       if (!previousSlide || typeof previousSlide === "undefined") return;
 
-      this.currentSlide.classList.add("translate-x-full");
+      this.currentSlide.$el.classList.add("translate-x-full");
 
-      previousSlide.classList.remove("-translate-x-full");
+      // this.currentSlide.backward();
+
+      previousSlide.$el.classList.remove("-translate-x-full");
 
       this.currentSlide = previousSlide;
       this.slideshowNumber > 1
@@ -287,13 +289,15 @@ export default {
     },
 
     nextSlide() {
-      let nextSlide = this.currentSlide.nextElementSibling;
+      let nextSlide = this.slides[this.slideshowNumber];
 
       if (!nextSlide || typeof nextSlide === "undefined") return;
 
-      this.currentSlide.classList.add("-translate-x-full");
+      this.currentSlide.$el.classList.add("-translate-x-full");
 
-      nextSlide.classList.remove("translate-x-full");
+      // this.currentSlide.forward();
+
+      nextSlide.$el.classList.remove("translate-x-full");
 
       this.currentSlide = nextSlide;
       this.slideshowNumber++;
@@ -305,11 +309,11 @@ export default {
       this.slides.forEach(function(slide, index) {
         if (index == 0) return;
 
-        slide.classList.add("translate-x-full");
-        slide.classList.remove("-translate-x-full");
+        slide.$el.classList.add("translate-x-full");
+        slide.$el.classList.remove("-translate-x-full");
       });
 
-      this.firstSlide.classList.remove("-translate-x-full");
+      this.firstSlide.$el.classList.remove("-translate-x-full");
 
       this.currentSlide = this.firstSlide;
       this.slideshowNumber = 1;
@@ -323,11 +327,11 @@ export default {
       this.slides.forEach(function(slide, index) {
         if (index == self.total - 1) return;
 
-        slide.classList.add("-translate-x-full");
-        slide.classList.remove("translate-x-full");
+        slide.$el.classList.add("-translate-x-full");
+        slide.$el.classList.remove("translate-x-full");
       });
 
-      this.lastSlide.classList.remove("translate-x-full");
+      this.lastSlide.$el.classList.remove("translate-x-full");
 
       this.currentSlide = this.lastSlide;
       this.slideshowNumber = this.total;
@@ -349,7 +353,7 @@ export default {
       let slidesInBetween = [];
 
       if (newSlideNumber > this.slideshowNumber) {
-        this.currentSlide.classList.add("-translate-x-full");
+        this.currentSlide.$el.classList.add("-translate-x-full");
 
         console.log(this.slideshowNumber + ":" + newSlideNumber);
         console.log(Math.abs(this.slideshowNumber - newSlideNumber));
@@ -362,13 +366,13 @@ export default {
         }
 
         slidesInBetween.forEach(slide => {
-          slide.classList.remove("translate-x-full");
-          slide.classList.add("-translate-x-full");
+          slide.$el.classList.remove("translate-x-full");
+          slide.$el.classList.add("-translate-x-full");
         });
 
-        newSlide.classList.remove("translate-x-full");
+        newSlide.$el.classList.remove("translate-x-full");
       } else if (newSlideNumber < this.slideshowNumber) {
-        this.currentSlide.classList.add("translate-x-full");
+        this.currentSlide.$el.classList.add("translate-x-full");
 
         if (Math.abs(this.slideshowNumber - newSlideNumber)) {
           slidesInBetween = this.slides.slice(
@@ -378,11 +382,11 @@ export default {
         }
 
         slidesInBetween.forEach(slide => {
-          slide.classList.remove("-translate-x-full");
-          slide.classList.add("translate-x-full");
+          slide.$el.classList.remove("-translate-x-full");
+          slide.$el.classList.add("translate-x-full");
         });
 
-        newSlide.classList.remove("-translate-x-full");
+        newSlide.$el.classList.remove("-translate-x-full");
       } else {
         return;
       }
