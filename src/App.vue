@@ -159,12 +159,37 @@ export default {
 
   watch: {
     slideshowNumber(newSlideshowNumber) {
-      localStorage.slideshowNumber = newSlideshowNumber;
-      this.scrollPreviewIntoView(newSlideshowNumber);
+      this.$nextTick(() => {
+        localStorage.slideshowNumber = newSlideshowNumber;
+        this.scrollPreviewIntoView(newSlideshowNumber);
+      });
     }
   },
 
   methods: {
+    initData() {
+      this.slides = this.$children;
+
+      this.total = this.slides.length;
+
+      this.currentSlide = this.slides[this.slideshowNumber - 1];
+      this.firstSlide = this.slides[0];
+      this.lastSlide = this.slides[this.total - 1];
+
+      this.loadPreviews();
+
+      this.currentSlide.activeState();
+
+      if (localStorage.slideshowNumber) {
+        this.gotoSlide(parseInt(localStorage.slideshowNumber));
+      }
+    },
+
+    loadPreviews() {
+      this.calculatePreviewSizes();
+      this.previews = this.slides.map(slide => slide.$el);
+    },
+
     calculatePreviewSizes() {
       this.previewWidth =
         this.previewBarHeight *
@@ -176,32 +201,6 @@ export default {
 
       this.previewContentScale =
         this.previewBarHeight / this.$refs.container.offsetHeight;
-    },
-
-    initData() {
-      this.slides = this.$children;
-
-      this.total = this.slides.length;
-
-      this.currentSlide = this.slides[this.slideshowNumber - 1];
-      this.currentSlide.activeState();
-      this.firstSlide = this.slides[0];
-      this.lastSlide = this.slides[this.total - 1];
-
-      this.calculatePreviewSizes();
-
-      this.loadPreviews();
-
-      setTimeout(() => {
-        if (localStorage.slideshowNumber) {
-          this.gotoSlide(parseInt(localStorage.slideshowNumber));
-        }
-      }, 100);
-    },
-
-    loadPreviews() {
-      this.previews = [];
-      this.previews = this.slides.map(slide => slide.$el);
     },
 
     addKeyboardShortcuts() {
