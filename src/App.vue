@@ -180,11 +180,11 @@ export default {
 
     initData() {
       this.slides = this.$children;
-      console.log(this.$children);
 
       this.total = this.slides.length;
 
       this.currentSlide = this.slides[this.slideshowNumber - 1];
+      this.currentSlide.activeState();
       this.firstSlide = this.slides[0];
       this.lastSlide = this.slides[this.total - 1];
 
@@ -193,8 +193,6 @@ export default {
       this.loadPreviews();
 
       setTimeout(() => {
-        this.currentSlide.$el.classList.remove("translate-x-full");
-
         if (localStorage.slideshowNumber) {
           this.gotoSlide(parseInt(localStorage.slideshowNumber));
         }
@@ -276,11 +274,9 @@ export default {
 
       if (!previousSlide || typeof previousSlide === "undefined") return;
 
-      this.currentSlide.$el.classList.add("translate-x-full");
+      this.currentSlide.startState();
 
-      // this.currentSlide.backward();
-
-      previousSlide.$el.classList.remove("-translate-x-full");
+      previousSlide.activeState();
 
       this.currentSlide = previousSlide;
       this.slideshowNumber > 1
@@ -293,11 +289,9 @@ export default {
 
       if (!nextSlide || typeof nextSlide === "undefined") return;
 
-      this.currentSlide.$el.classList.add("-translate-x-full");
+      this.currentSlide.finishState();
 
-      // this.currentSlide.forward();
-
-      nextSlide.$el.classList.remove("translate-x-full");
+      nextSlide.activeState();
 
       this.currentSlide = nextSlide;
       this.slideshowNumber++;
@@ -309,11 +303,10 @@ export default {
       this.slides.forEach(function(slide, index) {
         if (index == 0) return;
 
-        slide.$el.classList.add("translate-x-full");
-        slide.$el.classList.remove("-translate-x-full");
+        slide.startState();
       });
 
-      this.firstSlide.$el.classList.remove("-translate-x-full");
+      this.firstSlide.activeState();
 
       this.currentSlide = this.firstSlide;
       this.slideshowNumber = 1;
@@ -327,11 +320,10 @@ export default {
       this.slides.forEach(function(slide, index) {
         if (index == self.total - 1) return;
 
-        slide.$el.classList.add("-translate-x-full");
-        slide.$el.classList.remove("translate-x-full");
+        slide.finishState();
       });
 
-      this.lastSlide.$el.classList.remove("translate-x-full");
+      this.lastSlide.activeState();
 
       this.currentSlide = this.lastSlide;
       this.slideshowNumber = this.total;
@@ -353,10 +345,7 @@ export default {
       let slidesInBetween = [];
 
       if (newSlideNumber > this.slideshowNumber) {
-        this.currentSlide.$el.classList.add("-translate-x-full");
-
-        console.log(this.slideshowNumber + ":" + newSlideNumber);
-        console.log(Math.abs(this.slideshowNumber - newSlideNumber));
+        this.currentSlide.finishState();
 
         if (Math.abs(this.slideshowNumber - newSlideNumber)) {
           slidesInBetween = this.slides.slice(
@@ -366,13 +355,12 @@ export default {
         }
 
         slidesInBetween.forEach(slide => {
-          slide.$el.classList.remove("translate-x-full");
-          slide.$el.classList.add("-translate-x-full");
+          slide.finishState();
         });
 
-        newSlide.$el.classList.remove("translate-x-full");
+        newSlide.activeState();
       } else if (newSlideNumber < this.slideshowNumber) {
-        this.currentSlide.$el.classList.add("translate-x-full");
+        this.currentSlide.startState();
 
         if (Math.abs(this.slideshowNumber - newSlideNumber)) {
           slidesInBetween = this.slides.slice(
@@ -382,11 +370,10 @@ export default {
         }
 
         slidesInBetween.forEach(slide => {
-          slide.$el.classList.remove("-translate-x-full");
-          slide.$el.classList.add("translate-x-full");
+          slide.startState();
         });
 
-        newSlide.$el.classList.remove("-translate-x-full");
+        slide.activeState();
       } else {
         return;
       }
