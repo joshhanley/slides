@@ -337,7 +337,12 @@ export default {
     },
 
     gotoSlide(newSlideNumber) {
-      if (newSlideNumber > this.total || newSlideNumber < 1) return;
+      if (
+        newSlideNumber > this.total ||
+        newSlideNumber < 1 ||
+        newSlideNumber === this.slideshowNumber
+      )
+        return;
 
       let newSlide = this.slides[newSlideNumber - 1];
 
@@ -356,8 +361,6 @@ export default {
         slidesInBetween.forEach(slide => {
           slide.finishState();
         });
-
-        newSlide.activeState();
       } else if (newSlideNumber < this.slideshowNumber) {
         this.currentSlide.startState();
 
@@ -371,12 +374,9 @@ export default {
         slidesInBetween.forEach(slide => {
           slide.startState();
         });
-
-        slide.activeState();
-      } else {
-        return;
       }
 
+      newSlide.activeState();
       this.currentSlide = newSlide;
       this.slideshowNumber = newSlideNumber;
 
