@@ -137,7 +137,7 @@ export default {
       firstSlide: null,
       lastSlide: null,
 
-      presentationMode: false,
+      presentationMode: true,
       showShortcuts: true,
       showControls: true,
       showPreviews: true,
